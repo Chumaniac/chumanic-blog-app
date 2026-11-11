@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Chumanic Journal 阅读样例，支持检索文章与保存阅读位置。"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'"><link rel="icon" href="./journal.svg"><link rel="stylesheet" href="./journal.css"><title>Chumanic Journal · 阅读样例</title></head>
+<body><header><img src="./journal.svg" width="36" height="36" alt=""><strong>Chumanic Journal</strong><a href="https://github.com/Chumaniac/chumanic-blog-app">GitHub ↗</a></header>
+<main><aside><h1>阅读目录</h1><label for="query">查找标题或正文</label><input id="query" type="search" maxlength="100"><nav aria-label="样例文章" id="list"></nav></aside>
+<article tabindex="-1"><p id="section"></p><h2 id="title"></h2><div id="body"></div><button id="remember" type="button">保存阅读位置</button><p id="note" role="status"></p></article></main>
+<noscript>启用 JavaScript 后可搜索样例并保存阅读位置。</noscript><script type="module" src="./journal.js"></script></body></html>
