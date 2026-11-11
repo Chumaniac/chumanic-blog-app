@@ -4,7 +4,7 @@
 
 [![Build](https://github.com/Chumaniac/chumanic-blog-app/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/Chumaniac/chumanic-blog-app/actions/workflows/pages.yml) [![License](https://img.shields.io/badge/license-MIT-555)](LICENSE)
 
-检索文章，在当前浏览器保存上次读到的篇目。
+检索文章，点击「保存阅读位置」可让当前浏览器下次回到这篇文章。
 
 [打开阅读样例](https://chumaniac.github.io/chumanic-blog-app/)
 
@@ -16,7 +16,7 @@ cd chumanic-blog-app
 python3 -m http.server 8000 --bind 127.0.0.1 --directory site
 ```
 
-打开 `http://127.0.0.1:8000/`。样例包含三篇原创短文，支持标题与正文搜索、键盘导航和恢复上次选择。
+打开 `http://127.0.0.1:8000/`。样例包含三篇原创短文，支持标题与正文搜索。用 Tab 移动焦点、用 Enter 选择文章。清空搜索会回到先前选中的篇目；刷新时只恢复主动保存的篇目。
 
 ## 常见问题
 
