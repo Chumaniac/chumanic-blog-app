@@ -1,1 +1,12 @@
 *{box-sizing:border-box}body{margin:0;background:#f8f7f2;color:#28352c;font:16px/1.65 system-ui,sans-serif}header,main{max-width:64rem;margin:auto;padding:1.2rem clamp(1.1rem,4vw,3rem)}header{display:flex;align-items:center;gap:.7rem;border-bottom:1px solid #cfd7ca}header a{margin-left:auto;color:#3d5946}main{display:grid;grid-template-columns:minmax(12rem,1fr) minmax(0,2.2fr);gap:2rem;margin-top:1.5rem}h1{font-size:1.3rem}label,#section{color:#516057;font-size:.9rem}input,button{font:inherit;border:1px solid #bfc9be;border-radius:5px;background:#fff;max-width:100%;padding:.45rem .7rem}input{width:100%}button{cursor:pointer}nav button{width:100%;text-align:left;margin-top:.5rem}nav button[aria-current]{background:#294938;color:#fff}article{padding:clamp(1.2rem,4vw,2.5rem);border:1px solid #d6dccf;border-radius:10px;background:#fffefa}article h2{font:600 clamp(1.8rem,4vw,2.6rem)/1.3 Georgia,serif;letter-spacing:-.035em}article p{max-width:44em}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #63836b;outline-offset:2px}@media(max-width:650px){main{grid-template-columns:1fr;gap:1rem}nav{display:flex;gap:.5rem;flex-wrap:wrap}nav button{width:auto}}
+
+.reading-settings {border-block:1px solid #dde1d8; padding:.5rem 0; margin:1rem 0;}
+.reading-settings summary {cursor:pointer; padding:.3rem 0;}
+#preferences {display:flex; flex-wrap:wrap; align-items:end; gap:.7rem; margin:.7rem 0;}
+#preferences label {display:grid; gap:.2rem;}
+#preferences select {min-height:2.75rem; max-width:100%; color:inherit; background:#fff; border:1px solid #bfc9be; border-radius:5px; padding:.35rem; font:inherit;}
+article:has(#size option[value="large"]:checked) #body {font-size:1.15em;}
+article:has(#size option[value="largest"]:checked) #body {font-size:1.3em;}
+article:has(#spacing option[value="relaxed"]:checked) #body {line-height:2.2;}
+@media screen {article:has(#measure option[value="narrow"]:checked) #body {max-inline-size:46ch; margin-inline:auto;}}
+@media print {.reading-settings {display:none;} #body {font-size:1em!important; line-height:1.65!important;}}

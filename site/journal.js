@@ -27,3 +27,23 @@ function render() {
 byId('query').addEventListener('input',render);
 byId('remember').onclick=()=>{if (!displayed) return; current=displayed; try{localStorage.setItem(key,current);byId('note').textContent='已保存，下次打开会回到这篇文章。'}catch{byId('note').textContent='浏览器未允许保存，仍可继续阅读。'}};
 render();
+
+const preferenceKey = 'chumanic.journal.preferences.v1';
+const controls = Array.from(byId('preferences').querySelectorAll('select'));
+try {
+  const saved = JSON.parse(localStorage.getItem(preferenceKey) || '{}');
+  for (const control of controls) {
+    const value = saved?.[control.id];
+    if (Array.from(control.options).some(option => option.value === value)) control.value = value;
+  }
+} catch { /* Native selects also work with no stored preferences. */ }
+byId('preferences').addEventListener('change', () => {
+  try {
+    localStorage.setItem(preferenceKey,JSON.stringify(Object.fromEntries(controls.map(control=>[control.id,control.value]))));
+    byId('pref-status').textContent='阅读设置已保存。';
+  } catch { byId('pref-status').textContent='设置已应用到本页，浏览器未允许保存。'; }
+});
+byId('preferences').addEventListener('reset', () => {
+  try { localStorage.removeItem(preferenceKey); byId('pref-status').textContent='已恢复默认。'; }
+  catch { byId('pref-status').textContent='本页已恢复默认，浏览器未允许清除记录。'; }
+});
