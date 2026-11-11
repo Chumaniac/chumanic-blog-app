@@ -6,23 +6,24 @@ const articles = [
 const byId = id => document.getElementById(id);
 const key = 'chumanic.journal.sample.v1';
 let current = articles[0].id;
+let displayed;
 try { const saved = localStorage.getItem(key); if (articles.some(a=>a.id===saved)) current=saved; } catch {}
 function render() {
   const query = byId('query').value.trim().toLowerCase();
   const matches = articles.filter(a=>[a.title,...a.body].join(' ').toLowerCase().includes(query));
   const list = byId('list'); list.replaceChildren();
-  if (!matches.some(a=>a.id===current)) current=matches[0]?.id;
+  const article = matches.find(item=>item.id===current) ?? matches[0];
+  displayed = article?.id;
   for (const article of matches) {
     const button=document.createElement('button');button.textContent=article.title;
-    if (article.id===current) button.setAttribute('aria-current','page');
+    if (article.id===displayed) button.setAttribute('aria-current','page');
     button.onclick=()=>{current=article.id;render();document.querySelector('article').focus()};list.append(button);
   }
-  const article = matches.find(a=>a.id===current);
   byId('body').replaceChildren(); byId('note').textContent='';
   byId('section').textContent=article?.section||'';byId('title').textContent=article?.title||'没有匹配的文章';
   byId('remember').hidden=!article;
   for(const text of article?.body||[]) {const p=document.createElement('p');p.textContent=text;byId('body').append(p)}
 }
 byId('query').addEventListener('input',render);
-byId('remember').onclick=()=>{try{localStorage.setItem(key,current);byId('note').textContent='已保存，下次打开会回到这篇文章。'}catch{byId('note').textContent='浏览器未允许保存，仍可继续阅读。'}};
+byId('remember').onclick=()=>{if (!displayed) return; current=displayed; try{localStorage.setItem(key,current);byId('note').textContent='已保存，下次打开会回到这篇文章。'}catch{byId('note').textContent='浏览器未允许保存，仍可继续阅读。'}};
 render();
