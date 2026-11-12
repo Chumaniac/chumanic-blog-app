@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Chumanic Journal 阅读样例，支持检索文章与保存阅读位置。"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'"><link rel="icon" href="./journal.svg"><link rel="stylesheet" href="./journal.css"><title>Chumanic Journal · 阅读样例</title></head>
 <body><header><img src="./journal.svg" width="36" height="36" alt=""><strong>Chumanic Journal</strong><a href="https://github.com/Chumaniac/chumanic-blog-app">GitHub ↗</a></header>
-<main><aside><h1>阅读目录</h1><label for="query">查找标题或正文</label><input id="query" type="search" maxlength="100"><nav aria-label="样例文章" id="list"></nav></aside>
-<article tabindex="-1"><p id="section"></p><h2 id="title"></h2><details class="reading-settings"><summary>阅读设置</summary>
+<a class="skip" href="#reading">跳到正文</a><main><aside><p class="eyebrow">READING ROOM</p><h1>阅读目录</h1><p class="directory-caption">开发、工具与界面观察</p><button id="directory-toggle" type="button" aria-expanded="false" aria-controls="directory">选择文章</button><div id="directory"><label for="query">查找标题或正文</label><input id="query" type="search" maxlength="100"><nav aria-label="样例文章" id="list"></nav></div></aside>
+<article id="reading" tabindex="-1"><p id="section"></p><h2 id="title"></h2><details class="reading-settings"><summary>阅读设置</summary>
 <form id="preferences">
 <label>正文字号<select id="size"><option value="normal">标准</option><option value="large">较大</option><option value="largest">最大</option></select></label>
 <label>正文行距<select id="spacing"><option value="normal">标准</option><option value="relaxed">宽松</option></select></label>
 <label>正文栏宽<select id="measure"><option value="normal">标准</option><option value="narrow">较窄</option></select></label>
-<button type="reset">恢复默认</button></form><small id="pref-status" role="status"></small></details><div id="body"></div><button id="remember" type="button">保存阅读位置</button><p id="note" role="status"></p></article></main>
+<button type="reset">恢复默认</button></form><small id="pref-status" role="status"></small></details><div id="body"></div><nav class="article-pagination" aria-label="继续阅读"><button id="previous" type="button">上一篇</button><button id="next" type="button">下一篇</button></nav><button id="remember" type="button">保存阅读位置</button><p id="note" role="status"></p></article></main>
 <noscript>启用 JavaScript 后可搜索样例并保存阅读位置。</noscript><script type="module" src="./journal.js"></script></body></html>

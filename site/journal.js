@@ -17,13 +17,21 @@ function render() {
   for (const article of matches) {
     const button=document.createElement('button');button.textContent=article.title;
     if (article.id===displayed) button.setAttribute('aria-current','page');
-    button.onclick=()=>{current=article.id;render();document.querySelector('article').focus()};list.append(button);
+    const category=document.createElement('small');category.textContent=article.section;button.append(category);
+    button.onclick=()=>{current=article.id;render();closeDirectory();document.querySelector('article').focus()};list.append(button);
   }
   byId('body').replaceChildren(); byId('note').textContent='';
   byId('section').textContent=article?.section||'';byId('title').textContent=article?.title||'没有匹配的文章';
   byId('remember').hidden=!article;
+  byId('directory-toggle').textContent=article ? article.title+' · 切换文章' : '没有匹配文章 · 修改搜索';
+  if(!matches.length){const empty=document.createElement('p');empty.textContent='没有匹配的文章，请换个词或清空搜索。';empty.className='directory-empty';list.append(empty);}
+  const index=matches.indexOf(article);
+  for(const [id,offset] of [['previous',-1],['next',1]]){const next=matches[index+offset];byId(id).disabled=!article||!next;byId(id).onclick=()=>{if(next){current=next.id;render();closeDirectory();document.querySelector('article').focus();}};}
   for(const text of article?.body||[]) {const p=document.createElement('p');p.textContent=text;byId('body').append(p)}
 }
+function closeDirectory(){document.querySelector('aside').dataset.open='false';byId('directory-toggle').setAttribute('aria-expanded','false');}
+byId('directory-toggle').onclick=()=>{const open=byId('directory-toggle').getAttribute('aria-expanded')!=='true';document.querySelector('aside').dataset.open=String(open);byId('directory-toggle').setAttribute('aria-expanded',String(open));if(open)byId('query').focus();};
+byId('directory').addEventListener('keydown',e=>{if(e.key==='Escape'){closeDirectory();byId('directory-toggle').focus();}});
 byId('query').addEventListener('input',render);
 byId('remember').onclick=()=>{if (!displayed) return; current=displayed; try{localStorage.setItem(key,current);byId('note').textContent='已保存，下次打开会回到这篇文章。'}catch{byId('note').textContent='浏览器未允许保存，仍可继续阅读。'}};
 render();
