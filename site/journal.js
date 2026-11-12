@@ -55,3 +55,7 @@ byId('preferences').addEventListener('reset', () => {
   try { localStorage.removeItem(preferenceKey); byId('pref-status').textContent='已恢复默认。'; }
   catch { byId('pref-status').textContent='本页已恢复默认，浏览器未允许清除记录。'; }
 });
+
+byId('guide-directory').onclick=()=>{document.querySelector('aside').dataset.open='true';byId('directory-toggle').setAttribute('aria-expanded','true');byId('query').focus();};
+byId('guide-preferences').onclick=()=>{document.querySelector('.reading-settings').open=true;byId('size').focus();};
+byId('guide-remember').onclick=()=>{if(!byId('remember').hidden){byId('remember').focus();byId('remember').scrollIntoView({block:'center'});}else{byId('guide-directory').click();}};
