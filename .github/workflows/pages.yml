@@ -1,5 +1,6 @@
 name: Browser edition
 on:
+  pull_request:
   workflow_dispatch:
   push:
     branches: [main]
@@ -22,6 +23,7 @@ jobs:
         with:
           path: site
   publish:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
