@@ -6,7 +6,13 @@
 
 检索文章，点击「保存阅读位置」可让当前浏览器下次回到这篇文章。
 
-[打开阅读样例](https://chumaniac.github.io/chumanic-blog-app/)
+**[打开阅读样例 →](https://chumaniac.github.io/chumanic-blog-app/)**
+
+进入后，从目录选择文章，搜索标题或正文，展开「阅读设置」调整排版，再点「保存阅读位置」。样例使用三篇示例短文，保存的是篇目，不是正文行号。
+
+[![Chumanic Journal 的阅读目录、文章正文与保存篇目入口](docs/preview/online.png)](https://chumaniac.github.io/chumanic-blog-app/)
+
+*公开短文与阅读交互样例。点击截图开始阅读。*
 
 
 阅读页的“第一次阅读”可以打开目录搜索、定位排版设置或定位篇目保存。打开引导不会替你保存；阅读样例保存当前篇目，不记录正文行号。
