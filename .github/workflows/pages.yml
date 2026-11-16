@@ -5,8 +5,10 @@ on:
   push:
     branches: [main]
     paths:
-      - 'site/**'
-      - '.github/workflows/pages.yml'
+      - "site/**"
+      - ".github/workflows/pages.yml"
+      - "tests/**"
+      - ".github/workflows/showcase-release.yml"
 permissions:
   contents: read
 concurrency:
@@ -19,6 +21,12 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Check reading backup contract
+        run: node --test tests/reading-profile.test.mjs
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
           path: site
