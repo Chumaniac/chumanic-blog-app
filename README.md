@@ -6,7 +6,7 @@
 
 检索文章，点击「保存阅读位置」可让当前浏览器下次回到这篇文章。
 
-**[打开阅读样例 →](https://chumaniac.github.io/chumanic-blog-app/)**
+**[打开阅读样例 →](https://chumaniac.github.io/chumanic-blog-app/)** · [当前浏览器包](https://github.com/Chumaniac/chumanic-blog-app/releases/tag/showcase-2026.11.17)
 
 进入后，从目录选择文章，搜索标题或正文，展开「阅读设置」调整排版，再点「保存阅读位置」。样例使用三篇示例短文，保存的是篇目，不是正文行号。
 
